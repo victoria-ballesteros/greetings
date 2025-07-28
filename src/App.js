@@ -3,7 +3,7 @@ import './App.css';
 
 const messages = [
   "You're doing amazing!",
-  "Keep going, sunshine!",
+  "Keep going, sweet",
   "You light up the world ✨",
   "You're stronger than you think 💪",
   "Today is full of possibilities 🌈",
