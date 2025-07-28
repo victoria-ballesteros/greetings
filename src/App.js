@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+const messages = [
+  "You're doing amazing!",
+  "Keep going, sunshine!",
+  "You light up the world ✨",
+  "You're stronger than you think 💪",
+  "Today is full of possibilities 🌈",
+];
+
 function App() {
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name.trim()) {
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      setMessage(`${randomMsg} ${name}!`);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="background">
+        <div className="blob blob1" />
+        <div className="blob blob2" />
+        <div className="blob blob3" />
+      </div>
+
+      <div className="card">
+        <h2>Hello there 👋</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="What's your name?"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button type="submit">Get a boost!</button>
+        </form>
+        {message && <p className="message">{message}</p>}
+      </div>
     </div>
   );
 }
